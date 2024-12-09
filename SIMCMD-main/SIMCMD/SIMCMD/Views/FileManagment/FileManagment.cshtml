@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SIMCMD.Models.FileManagement>
+
+@{
+    ViewData["Title"] = "Document Management";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container mt-4">
+    <h3>Document Management</h3>
+    <div class="mb-3">
+        <a href="@Url.Action("FileManagement", new { folderName = "SFTPBackUp" })" class="btn btn-secondary">SFTP Backup</a>
+        <a href="@Url.Action("FileManagement", new { folderName = "Converted837P" })" class="btn btn-secondary">Converted 837P</a>
+        <a href="@Url.Action("FileManagement", new { folderName = "X12Files" })" class="btn btn-secondary">X12 Files</a>
+    </div>
+    <hr />
+        <hr />
+        <table class="table" id="DocumentMng">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Last Modified</th>
+                    <th>File Size</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FileName</td>
+                        <td>@item.LastModified</td>
+                        <td>
+                            @if (item.IsDirectory)
+                            {
+                                <p>No Files</p>
+                            }
+                            else
+                            {
+                                @item.FileSize
+                            }
+                        </td>
+                        <td>
+                            @if (item.IsDirectory)
+                            {
+                                <a href="@Url.Action("Index", new { path = item.FilePath })">View Contents</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Download", new { path = item.FilePath })">Download</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <form asp-controller="User" asp-action="Upload" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col-sm-6 col-3">
+                    <div class="form-group">
+                        <input type="file" id="file" name="file" class="form-control-file">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

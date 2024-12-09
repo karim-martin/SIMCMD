@@ -1,0 +1,35 @@
+@model ReportRequest
+
+@{
+    ViewData["Title"] = "Custom Report";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="form-horizontal container">
+    <h3 class="heading-margin-top text-center">File Conversion Report</h3>
+    <div class="col-md-12">
+        <form asp-controller="Report" asp-action="Create" method="post" class="form-inline">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mr-2">
+                <label asp-for="StartDate" class="control-label mr-1"></label>
+                <input asp-for="StartDate" class="form-control form-control-sm" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mr-2">
+                <label asp-for="EndDate" class="control-label mr-1"></label>
+                <input asp-for="EndDate" class="form-control form-control-sm" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mr-2">
+                <button type="submit" name="actionType" value="search" class="btn btn-primary btn-sm">Search</button>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="actionType" value="create" class="btn btn-success btn-sm">Save Report</button>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<div class="form-horizontal">
+    @Html.Raw(Model.ReportData ?? "<p>No report generated yet.</p>")
+</div>

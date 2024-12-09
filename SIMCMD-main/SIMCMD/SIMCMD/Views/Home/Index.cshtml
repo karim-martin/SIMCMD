@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityExtendUser> UserManager
+@{
+    /**/
+
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+
+<div class="container-fluid">
+    <h3 class="heading-margin-top mydiv">Dashboard</h3>
+    <div class="row mt-xl-3">
+        <div class="col-xl-4 col-md-4 col-sm-4 mb-1">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <a class="nav-link" href="/FileConversion/Index">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total FileUploaded Records</div>
+                                <div class="h6 mb-0 font-weight-bold text-gray-800">@ViewBag.IsFileUploadedTable</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 col-sm-4 mb-1">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <a class="nav-link" href="/FileConversion/Index">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total FileConverted Records</div>
+                                <div class="h6 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.IsFileConvertedTable</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 col-sm-4 mb-1">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <a class="nav-link" href="/FileConversion/Index">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total FileImported Records</div>
+                                <div class="h6 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.IsFileImportedTable</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-xl-3">
+        <div class="col-xl-6 col-md-6 col-sm-6 mb-1">
+            <!-- Area Chart -->
+            <div class="card shadow mb-2">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Total Claims</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-6 col-sm-6 mb-1">
+            <!-- Bar Chart -->
+            <div class="card shadow mb-2">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Total Claims Count</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

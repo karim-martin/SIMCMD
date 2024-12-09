@@ -1,0 +1,69 @@
+@model SIMCMD.Models.Provider
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="form-horizontal">
+    <form asp-action="Edit">
+        <h3 class="heading-margin-top">Provider</h3>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xl">
+                <div class="form-group">
+                    <label asp-for="InstitutionName" class="control-label"></label>
+                    <input asp-for="InstitutionName" class="form-control" />
+                    <span asp-validation-for="InstitutionName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl">
+                <div class="form-group">
+                    <label asp-for="InstitutionType" class="control-label"></label>
+                    <input asp-for="InstitutionType" class="form-control" />
+                    <span asp-validation-for="InstitutionType" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl">
+                <div class="form-group">
+                    <label asp-for="ProviderEmail" class="control-label"></label>
+                    <input asp-for="ProviderEmail" class="form-control" />
+                    <span asp-validation-for="ProviderEmail" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xl">
+                <div class="form-group">
+                    <label asp-for="ProviderCode" class="control-label"></label>
+                    <input asp-for="ProviderCode" class="form-control" />
+                    <span asp-validation-for="ProviderCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl">
+                <div class="form-group">
+                    <label asp-for="FolderName" class="control-label"></label>
+                    <input asp-for="FolderName" class="form-control" />
+                    <span asp-validation-for="FolderName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Unwrap" /> @Html.DisplayNameFor(model => model.Unwrap)
+            </label>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="SendEmailToProvider" /> @Html.DisplayNameFor(model => model.SendEmailToProvider)
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

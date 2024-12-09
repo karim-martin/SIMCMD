@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=content-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Payslip</title>
+    <style>
+        .menu {
+            width: 50%;
+            float: left;
+        }
+
+        .main {
+            width: 50%;
+            float: left;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1><b>{{CompanyName}}</b></h1>
+    </div>
+    <div class="main">
+        <h5>Name : {{Fullname}}({{EmployeeID}})</h5>
+        <h5>Period : {{Period}}</h5>
+        <h5>NIS : {{NISNumber}}</h5>
+    </div>
+    <div>
+        <table style="width:100%; border: 1px solid black;">
+            <tr>
+                <th style="border: 1px solid black;">Earnings</th>
+                <th style="border: 1px solid black;">Hours</th>
+                <th style="border: 1px solid black;">Rates</th>
+                <th style="border: 1px solid black;">Amount</th>
+                <th style="border: 1px solid black;">Deductions</th>
+                <th style="border: 1px solid black;">Amount</th>
+            </tr>
+            <tr></tr>
+            <tr style="text-align:left">
+                <td>Basic</td>
+                <td></td>
+                <td></td>
+                <td>${{GrossPay}}</td>
+                <td>PAYE</td>
+                <td>${{IncomeTax}}</td>
+            </tr>
+            <tr style="text-align:left">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>NIS</td>
+                <td>${{NISTax}}</td>
+            </tr>
+            <tr style="text-align:left">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>NHT</td>
+                <td>${{NHTTax}}</td>
+            </tr>
+            <tr style="text-align:left">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>EDTAX</td>
+                <td>${{EducationTax}}</td>
+            </tr>
+            <tr style="text-align:left">
+                <td style="text-align:center"><h4>NET PAY</h4></td>
+                <td></td>
+                <td></td>
+                <td>${{NetPay}}</td>
+                <td style="text-align:center"><h4>TOTAL</h4></td>
+                <td>${{ToTalDeduction}}</td>
+            </tr>
+        </table>
+        <table style="width:100%; border: 1px solid black;">
+            <tr>
+                <th style="border: 1px solid black;">Total Gross</th>
+                <th style="border: 1px solid black;">Total Paye</th>
+                <th style="border: 1px solid black;">Total NIS</th>
+                <th style="border: 1px solid black;">Total Education</th>
+                <th style="border: 1px solid black;">Total NHT</th>
+            </tr>
+            <tr>
+                <td>${{TotalTaxGross}}</td>
+                <td>${{TotalPaye}}</td>
+                <td>${{TotalNISTax}}</td>
+                <td>${{TotalEducationTax}}</td>
+                <td>${{TotalNHTTax}}</td>
+            </tr>   
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@model IEnumerable<SIMCMD.Models.FileConversion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container">
+    <h3 class="heading-margin-top text-center">All Auto Files Import</h3>
+    <div class="table-responsive">
+        <table class="table" id="UserTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FileName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Provider)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFileUploaded)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFileImported)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FileName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Provider)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsFileUploaded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsFileImported)
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" asp-action="Create">Add New</a>
+</div>

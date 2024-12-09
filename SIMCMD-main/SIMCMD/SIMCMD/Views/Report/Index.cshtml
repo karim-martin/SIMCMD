@@ -1,0 +1,48 @@
+@model IEnumerable<ReportRequest>
+
+@{
+    ViewData["Title"] = "Report Index";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container">
+    <h3 class="heading-margin-top text-center">All File Conversion Reports</h3>
+    <div class="table-responsive">
+        <table class="table" id="CustomReportTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" asp-action="Create">Add New</a>
+</div>

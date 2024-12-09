@@ -1,0 +1,75 @@
+@model SIMCMD.Models.FileConversion
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Edit File Conversion</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="FileName" class="control-label"></label>
+                            <input asp-for="FileName" class="form-control" placeholder="File Name" />
+                            <span asp-validation-for="FileName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Provider" class="control-label"></label>
+                            <input asp-for="Provider" class="form-control" placeholder="Provider" />
+                            <span asp-validation-for="Provider" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TotalClaims" class="control-label"></label>
+                            <input asp-for="TotalClaims" class="form-control" placeholder="Total Claims" />
+                            <span asp-validation-for="TotalClaims" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="InstitutionName" class="control-label"></label>
+                            <input asp-for="InstitutionName" class="form-control" placeholder="Institution Name" />
+                            <span asp-validation-for="InstitutionName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check">
+                            <input class="form-check-input" asp-for="IsFileUploaded" id="IsFileUploaded" />
+                            <label class="form-check-label" for="IsFileUploaded">
+                                @Html.DisplayNameFor(model => model.IsFileUploaded)
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <input class="form-check-input" asp-for="IsFileUnwraped" id="IsFileUnwraped" />
+                            <label class="form-check-label" for="IsFileUnwraped">
+                                @Html.DisplayNameFor(model => model.IsFileUnwraped)
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <input class="form-check-input" asp-for="IsFileConverted" id="IsFileConverted" />
+                            <label class="form-check-label" for="IsFileConverted">
+                                @Html.DisplayNameFor(model => model.IsFileConverted)
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <input class="form-check-input" asp-for="IsFileImported" id="IsFileImported" />
+                            <label class="form-check-label" for="IsFileImported">
+                                @Html.DisplayNameFor(model => model.IsFileImported)
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

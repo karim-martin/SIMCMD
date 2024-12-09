@@ -1,0 +1,60 @@
+@model IEnumerable<SIMCMD.Models.Provider>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container">
+    <h3 class="heading-margin-top text-center">All Providers</h3>
+    <div class="table-responsive">
+        <table class="table" id="UserTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstitutionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProviderCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProviderEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Unwrap)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SendEmailToProvider)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InstitutionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProviderCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProviderEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Unwrap)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SendEmailToProvider)
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" asp-action="Create">Add New</a>
+</div>

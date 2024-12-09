@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SIMCMD.Models.MyBackgroundJob>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container">
+    <h3 class="heading-margin-top text-center">All Background Jobs</h3>
+    <div class="table-responsive">
+        <table class="table" id="BackgroundJobsTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastRun)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Successful)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastRun)
+                        </td>
+                        <td>
+                            @if (item.Successful)
+                            {
+                                <input type="checkbox" checked style="transform: scale(1.5); color: blue;">
+                            }
+                            else
+                            {
+                                <input type="checkbox" unchecked style="transform: scale(1.5);">
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

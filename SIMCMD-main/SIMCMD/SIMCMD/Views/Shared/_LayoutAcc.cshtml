@@ -1,0 +1,147 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityExtendUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMCMD</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark sticky-top bg-dark">
+        <a class="navbar-brand" href="/Home/Index">
+            <img src="/High Resolution Logo.png" class="img-fluid" alt="Italian Trulli" />
+        </a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <partial name="_LoginPartial" />
+        </div>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="nav-link" href="/Home/Index">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProviders" aria-expanded="false" aria-controls="collapseProviders">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                            Providers
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseProviders" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/Provider/Create">Create Provider</a>
+                                <a class="nav-link" href="/Provider/Index">View Providers</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClaimsFiles" aria-expanded="false" aria-controls="collapseClaimsFiles">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                            Claims Files
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseClaimsFiles" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/ManualFileUpload/Create">Upload Claims File</a>
+                                <a class="nav-link" href="/ManualFileUpload/Index">View Claims Files</a>
+                                <a class="nav-link" href="/FileConversion/Index">View Auto FileImport</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports" aria-expanded="false" aria-controls="collapseReports">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                            Reports
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseReports" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/Report/Create">Create Report</a>
+                                <a class="nav-link" href="/Report/Index">View Reports</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            Admin
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/MyBackgroundJobs/Index">Background Jobs</a>
+                                <a class="nav-link" href="/FileManagment/FileManagment">File Explorer</a>
+                                <a class="nav-link" href="/UserRoles/Create">Add User</a>
+                                <a class="nav-link" href="/UserRoles/Index">View Users</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <div id="loading-overlay" class="loading-overlay">
+                        <img src="~/files/template/waiting-ugh.gif" alt="Loading...">
+                    </div>
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; BahamasFirst 2024</div>
+                        <div class="text-muted text-left">Version 1.0</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <partial name="_ShowModal" />
+        <script type="text/javascript">
+            window.onload = function () {
+                $("#isValue").html('@Html.Raw(ViewBag.Message)');
+                $("#alertMessage").modal("show");
+            };
+        </script>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="~/js/datatables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/fontawesome.js"></script>
+    <script src="~/js/Chart.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js"></script>
+    <script src="~/js/reports/chart-area.js"></script>
+    <script src="~/js/reports/chart-bar.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,18 @@
+@model ReportRequest
+
+@{
+    ViewData["Title"] = "Report Details";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div>
+    <h3 class="heading-margin-top text-center">File Conversion Report</h3>
+    <h5 class="heading-margin-top text-center">Start Date: @Model.StartDate.ToShortDateString() - End Date: @Model.EndDate.ToShortDateString()</h5>
+    <hr />
+    <div class="report-content">
+        @Html.Raw(@Model.ReportData ?? "<p>No detailed report available.</p>")
+    </div>
+    <div>
+        <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
+    </div>
+</div>

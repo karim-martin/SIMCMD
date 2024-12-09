@@ -1,0 +1,55 @@
+@model IEnumerable<SIMCMD.Models.ManualFileUpload>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAcc.cshtml";
+}
+
+<div class="container">
+    <h3 class="heading-margin-top text-center">All Manual File Upload</h3>
+    <div class="table-responsive">
+        <table class="table" id="UserTable">
+            <thead>
+                <tr>
+                     <th>
+                        @Html.DisplayNameFor(model => model.FileName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Provider)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFileUploaded)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFileImported)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Provider)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsFileUploaded)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsFileImported)
+                        </th>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" asp-action="Create">Add New</a>
+</div>
+
