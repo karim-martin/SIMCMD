@@ -12,7 +12,20 @@ namespace SIMCMD.Models
         [Required, MaxLength(40), Display(Name = "Full name*")]
         public string FullName { get; set; }
 
+        [MaxLength(35)]
+        public string FirstName { get; set; }
+
+        [MaxLength(35)]
+        public string LastName { get; set; }
+
+        [MaxLength(16)]
+        public string Date { get; set; }
+
+        [Required, MaxLength(12)]
+        public string DepartmentNo { get; set; }
+
         public string AccountStatus { get; set; }
+
     }
 
     public class UserRole : IdentityRole
